@@ -13,4 +13,26 @@ class QuestionController extends Controller
 
         return view('questions.index', compact('quiz', 'questions'));
     }
+
+    public function submit(Request $request, Quiz $quiz)
+{
+    $correctAnswers = 0;
+    $wrongAnswers = 0;
+    $unanswered = 0;
+    $totalQuestions = $quiz->questions->count();
+
+    foreach ($quiz->questions as $question) {
+        $answer = $request->input("answers.{$question->id}");
+        if ($answer === null) {
+            $unanswered++;
+        } elseif ($answer == $question->correct_option) {
+            $correctAnswers++;
+        } else {
+            $wrongAnswers++;
+        }
+    }
+
+    return view('questions.result', compact('correctAnswers', 'wrongAnswers', 'unanswered', 'totalQuestions'));
+}
+
 }

@@ -12,3 +12,4 @@ Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.sh
 
 // Quiz'e ait soruların listesi
 Route::get('/quizzes/{quiz}/questions', [QuestionController::class, 'index'])->name('questions.index');
+Route::post('/quizzes/{quiz}/questions/submit', [QuestionController::class, 'submit'])->name('questions.submit');
