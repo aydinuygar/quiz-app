@@ -2,8 +2,13 @@
 
 @section('title', $quiz->title)
 
+@section('jumbotron')
+    <div class="jumbotron mt-4">
+        <h1 class="display-4">{{ $quiz->title }}</h1>
+        <p class="lead">{{ $quiz->description }}</p>
+    </div>
+@endsection
+
 @section('content')
-    <h1>{{ $quiz->title }}</h1>
-    <p>{{ $quiz->description }}</p>
-    <a href="{{ route('questions.index', $quiz) }}">Show Questions</a>
+    <a href="{{ route('questions.index', $quiz) }}" class="btn btn-primary">Show Questions</a>
 @endsection
