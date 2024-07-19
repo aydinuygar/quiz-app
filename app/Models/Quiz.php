@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Quiz extends Model
 {
     use HasFactory;
 
-    protected $table = 'quizzes'; // Veritabanındaki tablo adı
-
-    protected $fillable = ['title', 'description'];
+    protected $fillable = ['title', 'description', 'time_limit'];
 
     public function questions()
     {
         return $this->hasMany(Question::class);
     }
 }
+
